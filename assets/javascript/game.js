@@ -1,5 +1,8 @@
 // In this case, the "this" keyword refers to the button that was clicked
-$("button").on("click", function () {
+$(document).on("click", "button", function (event) {
+    event.preventDefault();
+
+    $("#gifs-appear-here").html("")
 
     var anime = $(this).attr("data-anime");
 
@@ -47,4 +50,19 @@ $("button").on("click", function () {
                 }
             }
         });
+});
+
+$("#add-animated").on("click", function (event) {
+    event.preventDefault();
+
+    var newAnime = $("#animated-input").val().trim();
+    console.log(newAnime);
+    var button = $("<button>");
+
+    button.text(newAnime);
+    button.attr("data-anime", newAnime);
+
+    $("#animated-buttons").append(button);
+
+
 });
